@@ -1,13 +1,295 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+   
+  }
+  
+  body {
+    background-color: blueviolet;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 15px;
+  }
+  .hello {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  .editor {
+    height: 100vh;
+    overflow: hidden;
+    width: auto;
+    overflow-x: hidden;
+  }
+  .previewer {
+    height: 100vh;
+    width: auto;
+    overflow-x: hidden;
+  }
+  textarea {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-top:none ;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(217, 219, 243);
+    padding: 20px;
+    line-height: 20px;
+    padding-bottom: 80px;
+  }
+  #preview {
+    border-top: none;
+    width: 100%;
+    margin-top: 43px;
+    background-color: rgb(217, 219, 243);
+    padding: 10px;
+    padding-left: 30px;
+    line-height: 30px;
+  }
+  #preview-header {
+      text-align: left;
+      background-color: blueviolet;
+      overflow: hidden;
+      border: 1px solid black;
+      width:50%;
+      height: 50px;
+      padding: 10px;
+      padding-right: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: left;
+      position: fixed;
+      
+  }
+  #editor-header {
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid;
+    width: 100%;
+    padding: 10px;
+  }
+  
+  
+  ::-webkit-scrollbar {
+    width: 1px;
+  }
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px rgb(255, 255, 255);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgb(0, 0, 0);
+  }
+  .icons {
+    display: inline-flex;
+    width: 100%;
+    font-size: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: 900;
+    justify-content: space-between;
+  }
+  #max {
+    display: block;
+  }
+  #min {
+    display: none;
+  }
+  #prev-max {
+    display: block;
+    position: relative;
+  }
+  #prev-min {
+    display: none;
+    position: relative;
+  }
+  .prev-icons {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+  }
+  @media (max-width: 915px) {
+    .hello {
+      display: block;
+    }
+    .icons {
+      display: inline-flex;
+      width: 100%;
+      font-size: 15px;
+      font-weight: 900;
+      justify-content: space-between;
+    }
+    .preview-container {
+      display: flex;
+      width: 100vw;
+      overflow: hidden;
+      justify-content: center;
+    }
+    .editor-container {
+      display: flex;
+      overflow: hidden;
+      justify-content: center;
+      width: 100vw;
+    }
+    #preview-header > h3 {
+      font-size: 27px;
+    }
+    .editor {
+      overflow: visible;
+      display: flex;
+      padding: 0;
+      width: 100%;
+      height: fit-content;
+      flex-direction: column;
+    }
+    .previewer {
+      display: flex;
+      overflow: hidden;
+      padding: 0;
+      margin-top: 40px;
+      height: 100%;
+      margin-bottom: 40px;
+      width: 100vw;
+      flex-direction: column;
+    }
+    #preview {
+      background-color: rgb(217, 219, 243);
+      min-height: 400px;
+      height: fit-content;
+      width: 90%;
+      margin: auto;
+      margin-bottom: 40px;
+      border: 1px solid;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+      padding: 10px;
+      margin-bottom: 40px;
+      padding-bottom: 100px;
+      line-height: 24px;
+    }
+    #preview-header {
+      position: relative;
+      text-align: left;
+      overflow: hidden;
+      border: 1px solid black;
+      width: 90%;
+      border-bottom: none;
+      margin: auto;
+      height: 50px;
+      padding: 20px;
+      display: inline-flex;
+      align-items: center;
+    }
+    textarea {
+      background-color: rgb(217, 219, 243);
+      min-height: 500px;
+      width: 75%;
+      margin: auto;
+      border: 1px solid;
+      padding: 10px;
+      border-bottom-right-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+  
+    #editor-header {
+      overflow: hidden;
+      text-align: left;
+      border: 1px solid black;
+      border-bottom: none;
+      width: 75%;
+      margin: auto;
+      padding: 20px;
+      font-size: 20px;
+      height: 50px;
+      margin-top: 20px;
+      display: inline-flex;
+      align-items: center;
+    }
+  }
+  
+  #preview > h1 {
+    font-size: 30px;
+    padding-bottom: 20px;
+    text-align: center;
+  }
+  #preview > p {
+    font-size: 15px;
+    margin: 10px 0 10px 0;
+  }
+  ul {
+    padding: 20px;
+  }
+  ol {
+    padding: 20px;
+  }
+  p > code {
+    font-size: 12px;
+    color: rgb(209, 223, 250);
+    background-color: rgb(0, 0, 68);
+    padding: 2px;
+  }
+  code {
+    font-size: 0.875rem;
+    font-weight: lighter;
+    font-style: oblique;
+  }
+  
+  pre {
+    display: block;
+    overflow: auto;
+    height: fit-content;
+    margin-top: 10px;
+    background: rgba(4, 0, 255, 0.3);
+    padding: 10px;
+    line-height: 1.2;
+  }
+  
+  table {
+    border-collapse: collapse;
+  }
+  a {
+    color: rgb(89, 0, 255);
+    font-size: large;
+    font-weight: 800;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    text-decoration: none;
+  }
+  
+  td,
+  th {
+    border: 2px solid rgb(32, 106, 218);
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  img {
+    display: block;
+    max-width: 95%;
+    height: 300px;
+    margin: 2rem auto;
+  }
+  blockquote {
+    border-left: 3px solid #a200ff;
+    color: #0406a0;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding-left: 5px;
+    margin: 25px 0 15px 25px;
+  }
+  
+  textarea:focus {
+    outline: none;
+  }
+  
+  @media screen and (max-width: 420px) {
+    body {
+      font-size: 0.7rem;
+    }
+  }
+  .icons>i:hover{
+    color: rgb(255, 0, 212);
+   font-size: 18px;
+  }
